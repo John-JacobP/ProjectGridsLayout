@@ -1,3 +1,1 @@
-export default class Dashboard {
-
-}
+export default class Dashboard {}
