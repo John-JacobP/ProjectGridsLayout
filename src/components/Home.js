@@ -18,21 +18,20 @@ const Widget = styled.div`
 
 const Home = () => {
   const [layoutConfig, updateLayoutConfig] = useState([
-    { i: "item1", x: 0, y: 0, w: 2, h: 3 },
-    { i: "item2", x: 2, y: 0, w: 4, h: 3 },
-    { i: "item3", x: 6, y: 0, w: 2, h: 3 },
+    {i: "Test", x: 0, y: 1, h: 1, w: 1},
   ]);
 
   const handleDrop = (layout, layoutItem, _event) => {
-    const newLayoutItem = { ...layoutItem, i: "VM" };
+    console.log(layoutItem);
+    const newLayoutItem = { ...layoutItem };
     updateLayoutConfig([...layoutConfig, newLayoutItem]);
   };
   const GridLayoutProps = {
     className: "my-grid",
     cols: 12,
-    rowHeight: 167,
+    rowHeight: 150,
     width: 1100,
-    Layout: { ...layoutConfig },
+    // Layout: { ...layoutConfig },
   };
 
   return (
@@ -50,6 +49,7 @@ const Home = () => {
               {...GridLayoutProps}
               isDroppable={true}
               onDrop={handleDrop}
+              droppingItem={{i: "VM", w: 1, h: 1}}
             >
               {layoutConfig.map((layout) => (
                 <Widget key={layout.i}>{layout.i}</Widget>
