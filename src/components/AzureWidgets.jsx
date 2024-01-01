@@ -11,14 +11,25 @@ const DraggableWidget = styled.div`
 
 const widgetList = ["VM", "SQL", "Resource Group", "Users", "Load Balancers"];
 
+const handleDrag = (widget, updateStateCallback) => {
+  // updates `_droppingItem` in Home.js
 
-export const AzureWidgets = () => {
+  updateStateCallback(widget);
+};
+
+export const AzureWidgets = ({ updateStateCallback }) => {
   return (
     <>
       Azure Widgets
-      {
-        widgetList.map((widget, index) => <DraggableWidget key={index} draggable={true}>{widget}</DraggableWidget>)
-      }
+      {widgetList.map((widget, index) => (
+        <DraggableWidget
+          key={index}
+          draggable={true}
+          onDrag={() => handleDrag(widget, updateStateCallback)}
+        >
+          {widget}
+        </DraggableWidget>
+      ))}
     </>
   );
 };

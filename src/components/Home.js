@@ -18,14 +18,18 @@ const Widget = styled.div`
 
 const Home = () => {
   const [layoutConfig, updateLayoutConfig] = useState([
-    {i: "Test", x: 0, y: 1, h: 1, w: 1},
+    { i: "Test", x: 0, y: 1, h: 1, w: 1 },
   ]);
 
+  const [_droppingItem, updateDroppingItem] = useState("");
+
   const handleDrop = (layout, layoutItem, _event) => {
-    console.log(layoutItem);
+    // Function to add the new widget to the layout
+
     const newLayoutItem = { ...layoutItem };
     updateLayoutConfig([...layoutConfig, newLayoutItem]);
   };
+
   const GridLayoutProps = {
     className: "my-grid",
     cols: 12,
@@ -41,7 +45,7 @@ const Home = () => {
       </div>
       <div className="sidebarandbody">
         <div className="sidebar">
-          <AzureWidgets />
+          <AzureWidgets updateStateCallback={updateDroppingItem} />
         </div>
         <div className="body">
           <div className="insideBody">
@@ -49,7 +53,7 @@ const Home = () => {
               {...GridLayoutProps}
               isDroppable={true}
               onDrop={handleDrop}
-              droppingItem={{i: "VM", w: 1, h: 1}}
+              droppingItem={{ i: _droppingItem, w: 1, h: 1 }}
             >
               {layoutConfig.map((layout) => (
                 <Widget key={layout.i}>{layout.i}</Widget>
