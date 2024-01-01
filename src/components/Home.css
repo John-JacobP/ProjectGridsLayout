@@ -1,11 +1,11 @@
-.FullPage{
+.FullPage {
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
 }
 
-.TopNav{
+.TopNav {
     width: 100vw;
     height: 5vh;
     display: flex;
@@ -15,11 +15,11 @@
     flex-direction: row;
 }
 
-.sidebarandbody{
+.sidebarandbody {
     display: flex;
 }
 
-.sidebar{
+.sidebar {
     height: 95vh;
     width: 10vw;
     display: flex;
@@ -29,9 +29,9 @@
     justify-content: flex-start;
 }
 
-.body{
+.body {
     height: 95vh;
-    width: 95vw;
+    width: 90vw;
     display: flex;
     background-color: #ecece1;
     flex-direction: row;
@@ -39,7 +39,7 @@
     align-items: center;
 }
 
-.insideBody{
+.insideBody {
     display: flex;
     height: 91vh;
     width: 93vw;
