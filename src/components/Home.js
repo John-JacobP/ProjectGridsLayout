@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import styled from "styled-components";
+
 import "./Home.css"
 import GridLayout from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
+import { AzureWidgets } from "./AzureWidgets";
+
+
+const Header = styled.h3`
+    color: white;
+    padding: 1em;
+`;
+
+const Widget = styled.div`
+    border: 1px solid black;
+    background: ivory;
+`;
+
 
 
 const Home = () => {
-    const layoutConfig = [
+
+
+ const [layoutConfig, updateLayoutConfig] = useState([
         {i: 'item1', x: 0, y: 0, w: 2, h: 3},
         {i: 'item2', x: 2, y: 0, w: 4, h: 3},
         {i: 'item3', x: 6, y: 0, w: 2, h: 3}
-    ];
+    ]);
 
+ const handleDrop = (layout, layoutItem, _event) => {
+    const newLayoutItem = {...layoutItem, i: "VM"}
+    updateLayoutConfig([...layoutConfig, newLayoutItem]);
+}  
     const GridLayoutProps = {
         className: "my-grid",
         cols: 12,
@@ -23,21 +44,22 @@ const Home = () => {
     return (
         <div className="FullPage">
             <div className="TopNav">
-                <p>TopNav</p>
+                <Header>Layout Editor</Header>
             </div>
             <div className="sidebarandbody">
                 <div className="sidebar">
-                    <p>SideBar</p>
+                    <AzureWidgets />
                 </div>
                 <div className="body">
                     <div className="insideBody">
-                        <GridLayout {...GridLayoutProps}>
-                            <div key="item1" style={{background: '#003c51'}}>Item 1</div>
-                            <div key="item2" style={{background: '#006e74'}}>Item 2</div>
-                            <div key="item3" style={{background: '#d3862b'}}>Item 3</div>
-                            <div key="item4" style={{background: '#44b74e'}}>Item 4</div>
-                            <div key="item5" style={{background: '#20ad88'}}>Item 5</div>
-                            <div key="item6" style={{background: '#d32b2b'}}>Item 6</div>
+                        <GridLayout 
+                            {...GridLayoutProps}
+                            isDroppable={true}
+                            onDrop={handleDrop}
+                        >
+                            {
+                                layoutConfig.map(layout => <Widget key={layout.i}>{layout.i}</Widget>)
+                            }
                         </GridLayout>
                     </div>
                 </div>
