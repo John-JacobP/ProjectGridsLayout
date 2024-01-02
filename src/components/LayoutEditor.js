@@ -47,33 +47,33 @@ const LayoutEditor = () => {
   };
 
   return (
-      <div className="FullPage">
-        <div className="TopNav">
-          <Header>Layout Editor</Header>
+    <div className="FullPage">
+      <div className="TopNav">
+        <Header>Layout Editor</Header>
+      </div>
+      <div className="sidebarandbody">
+        <div className="sidebar">
+          <AzureWidgets updateStateCallback={updateDroppingItem} />
         </div>
-        <div className="sidebarandbody">
-          <div className="sidebar">
-            <AzureWidgets updateStateCallback={updateDroppingItem} />
-          </div>
-          <div className="body">
-            <div
-                className="insideBody"
-                onDrop={(event) => {
-                  handleDrop(null, event);
-                }}
-                onDragOver={(event) => event.preventDefault()}
-            >
-              <GridLayout {...GridLayoutProps} isDroppable={true}>
-                {layoutConfig.map((layout) => (
-                    <Widget key={layout.i} data-grid={layout}>
-                      {layout.i}
-                    </Widget>
-                ))}
-              </GridLayout>
-            </div>
+        <div className="body">
+          <div
+            className="insideBody"
+            onDrop={(event) => {
+              handleDrop(null, event);
+            }}
+            onDragOver={(event) => event.preventDefault()}
+          >
+            <GridLayout {...GridLayoutProps} isDroppable={true}>
+              {layoutConfig.map((layout) => (
+                <Widget key={layout.i} data-grid={layout}>
+                  {layout.i}
+                </Widget>
+              ))}
+            </GridLayout>
           </div>
         </div>
       </div>
+    </div>
   );
 };
 
