@@ -41,8 +41,8 @@
 
 .insideBody {
   display: flex;
-  height: 91vh;
-  width: 93vw;
+  height: 93vh;
+  width: 89vw;
   background-color: #afaf87;
   border-radius: 2vh;
   overflow: auto;
