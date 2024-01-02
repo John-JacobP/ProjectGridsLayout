@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import "./Home.css";
 import GridLayout from "react-grid-layout";
+import { AzureWidgets } from "./AzureWidgets";
+
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
-import { AzureWidgets } from "./AzureWidgets";
+import "./LayoutEditor.css";
 
 const Header = styled.h3`
   color: white;
@@ -16,7 +17,7 @@ const Widget = styled.div`
   background: ivory;
 `;
 
-const Home = () => {
+export default function LayoutEditor() {
   const [layoutConfig, updateLayoutConfig] = useState([
     { i: "Test", x: 0, y: 1, h: 1, w: 1 },
   ]);
@@ -64,6 +65,4 @@ const Home = () => {
       </div>
     </div>
   );
-};
-
-export default Home;
+}
