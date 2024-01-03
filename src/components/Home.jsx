@@ -36,7 +36,7 @@ export default function Home() {
                         width={1300}
                         rowHeight={100}
                         compactType={null}
-                        className="GridLayout"
+                        className="GridLayoutHome"
                     >
                         {/* Render widgets based on the current layout configuration */}
                         {layout.map((widget) => (

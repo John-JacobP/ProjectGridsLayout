@@ -4,9 +4,9 @@
     height: 100vh;
 }
 
-.GridLayout{
-    height: 100vh !important;
-    width: 100vw !important;
+.GridLayoutHome{
+    height: 100% !important;
+    width: 100% !important;
 }
 
 .widgets{
