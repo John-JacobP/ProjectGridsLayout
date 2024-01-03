@@ -34,16 +34,17 @@
   width: 90vw;
   display: flex;
   background-color: #ecece1;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .insideBody {
   display: flex;
-  height: 93vh;
+  margin-bottom: 10px;
+  height: 88vh;
   width: 89vw;
-  background-color: #afaf87;
+  background-color: #e1d7bb;
   border-radius: 2vh;
   overflow: auto;
   flex-direction: row;
@@ -58,4 +59,7 @@
 
 .savebutton{
   display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin: 1vh 4vh 1vh 0;
 }

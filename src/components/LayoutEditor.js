@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import GridLayout from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
-import {AzureWidgets} from "./AzureWidgets";
+import { AzureWidgets } from "./AzureWidgets";
 import "./LayoutEditor.css";
 
 const Header = styled.h3`
@@ -18,31 +18,36 @@ const Widget = styled.div`
 
 const LayoutEditor = () => {
   const [layoutConfig, updateLayoutConfig] = useState([]);
-  const [counter, setCounter] = useState(0);
   const [_droppingItem, updateDroppingItem] = useState("");
 
-  const handleDrop = (layout, layoutItem, event) => {
-    if (event.preventDefault) {
-      event.preventDefault();
-    }
+  const handleDrop = (_layout, _layoutItem, event) => {
+    event.preventDefault();
 
     const rect = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
 
-    const col = Math.floor(x / (rect.width / GridLayoutProps.cols));
-    const row = Math.floor(y / (rect.height / GridLayoutProps.rowHeight));
+    const col = Math.floor((x / rect.width) * GridLayoutProps.cols);
+    const row = Math.floor((y / rect.height) * (rect.height / GridLayoutProps.rowHeight));
 
-    const newLayoutItem = {
-      i: `${_droppingItem}-${counter}`,
-      x: col,
-      y: row,
-      w: 1,
-      h: 1,
-    };
+    const newWidgetId = `${_droppingItem}`;
 
-    updateLayoutConfig([...layout, newLayoutItem]);
-    setCounter((prevCounter) => prevCounter + 1);
+    // Check if a widget with the same ID already exists
+    const isDuplicate = layoutConfig.some((widget) => widget.i === newWidgetId);
+
+    if (!isDuplicate) {
+      const newLayoutItem = {
+        i: newWidgetId,
+        x: col,
+        y: row,
+        w: 1,
+        h: 1,
+      };
+
+      updateLayoutConfig([...layoutConfig, newLayoutItem]);
+    } else {
+      window.alert(`Widget with ID ${newWidgetId} already exists. Duplicates not allowed.`);
+    }
   };
 
   const handleSaveLayout = () => {
@@ -72,12 +77,19 @@ const LayoutEditor = () => {
             <AzureWidgets updateStateCallback={updateDroppingItem} />
           </div>
           <div className="body">
-            <div className="insideBody" onDrop={(layout, layoutItem, event) => handleDrop(layout, layoutItem, event)}>
+            <div className="savebutton">
+              <button onClick={handleSaveLayout}>Save Layout</button>
+            </div>
+            <div
+                className="insideBody"
+                onDrop={(event) => handleDrop(layoutConfig, null, event)}
+                onDragOver={(event) => event.preventDefault()}
+            >
               <GridLayout
                   {...GridLayoutProps}
                   isDroppable={true}
-                  onLayoutChange={(layout) => validateWidget(layout)}
-                  onDrop={(layout, layoutItem, event) => handleDrop(layout, layoutItem, event)}
+                  onLayoutChange={validateWidget}
+                  onDrop={(layout, layoutItem, _event) => handleDrop(layout, layoutItem, _event)}
                   className="GridLayout"
               >
                 {layoutConfig.map((layout) => (
@@ -86,9 +98,6 @@ const LayoutEditor = () => {
                     </Widget>
                 ))}
               </GridLayout>
-              <div className="savebutton">
-                <button onClick={handleSaveLayout}>Save Layout</button>
-              </div>
             </div>
           </div>
         </div>
