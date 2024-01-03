@@ -60,6 +60,7 @@ const LayoutEditor = () => {
     cols: 12,
     rowHeight: 150,
     width: 1200,
+    compactType: null,
   };
 
   const validateWidget = (layout) => {
