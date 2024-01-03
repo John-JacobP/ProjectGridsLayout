@@ -46,4 +46,16 @@
   background-color: #afaf87;
   border-radius: 2vh;
   overflow: auto;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.GridLayout{
+  display: flex;
+  height: 100% !important;
+  width: 100%;
+}
+
+.savebutton{
+  display: flex;
 }
