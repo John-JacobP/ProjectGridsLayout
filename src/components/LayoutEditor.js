@@ -17,10 +17,11 @@ const Widget = styled.div`
 `;
 
 const LayoutEditor = () => {
-  const [layoutConfig, updateLayoutConfig] = useState([]);
-  const [_droppingItem, updateDroppingItem] = useState("");
+  const [layoutConfig, setLayoutConfig] = useState([]);
+  const [droppingItem, setDroppingItem] = useState("");
+  const [showLayoutSavedMessage, setShowLayoutSavedMessage] = useState(false);
 
-  const handleDrop = (_layout, _layoutItem, event) => {
+  const handleDrop = (event) => {
     event.preventDefault();
 
     const rect = event.currentTarget.getBoundingClientRect();
@@ -30,9 +31,7 @@ const LayoutEditor = () => {
     const col = Math.floor((x / rect.width) * GridLayoutProps.cols);
     const row = Math.floor((y / rect.height) * (rect.height / GridLayoutProps.rowHeight));
 
-    const newWidgetId = `${_droppingItem}`;
-
-    // Check if a widget with the same ID already exists
+    const newWidgetId = `${droppingItem}`;
     const isDuplicate = layoutConfig.some((widget) => widget.i === newWidgetId);
 
     if (!isDuplicate) {
@@ -44,7 +43,7 @@ const LayoutEditor = () => {
         h: 1,
       };
 
-      updateLayoutConfig([...layoutConfig, newLayoutItem]);
+      setLayoutConfig((prevLayout) => [...prevLayout, newLayoutItem]);
     } else {
       window.alert(`Widget with ID ${newWidgetId} already exists. Duplicates not allowed.`);
     }
@@ -52,7 +51,12 @@ const LayoutEditor = () => {
 
   const handleSaveLayout = () => {
     localStorage.setItem("layout", JSON.stringify(layoutConfig));
-    console.log("Layout saved:", layoutConfig);
+    setShowLayoutSavedMessage(true);
+
+    // Hide the message after a short delay (e.g., 3 seconds)
+    setTimeout(() => {
+      setShowLayoutSavedMessage(false);
+    }, 3000);
   };
 
   const GridLayoutProps = {
@@ -65,7 +69,7 @@ const LayoutEditor = () => {
 
   const validateWidget = (layout) => {
     const newLayout = layout.filter((widget) => widget.i !== "__dropping-elem__");
-    updateLayoutConfig(newLayout);
+    setLayoutConfig(newLayout);
   };
 
   return (
@@ -75,22 +79,23 @@ const LayoutEditor = () => {
         </div>
         <div className="sidebarandbody">
           <div className="sidebar">
-            <AzureWidgets updateStateCallback={updateDroppingItem} />
+            <AzureWidgets updateStateCallback={setDroppingItem} />
           </div>
           <div className="body">
             <div className="savebutton">
-              <button onClick={handleSaveLayout}>Save Layout</button>
+              <button style={{cursor:'pointer'}} onClick={handleSaveLayout}>Save Layout</button>
+              {showLayoutSavedMessage && <p>Layout saved!</p>}
             </div>
             <div
                 className="insideBody"
-                onDrop={(event) => handleDrop(layoutConfig, null, event)}
+                onDrop={(event) => handleDrop(event)}
                 onDragOver={(event) => event.preventDefault()}
             >
               <GridLayout
                   {...GridLayoutProps}
                   isDroppable={true}
                   onLayoutChange={validateWidget}
-                  onDrop={(layout, layoutItem, _event) => handleDrop(layout, layoutItem, _event)}
+                  onDrop={(layout, layoutItem, event) => handleDrop(event)}
                   className="GridLayout"
               >
                 {layoutConfig.map((layout) => (

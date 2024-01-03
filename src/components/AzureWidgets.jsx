@@ -4,32 +4,35 @@ const DraggableWidget = styled.div`
   border: 1px solid black;
   border-radius: 5px;
   background-color: white;
-  height: 30px;
+  min-height: 24px;
+  min-width: 115px;
   padding: 2px;
-  margin-bottom: 5px;
+  margin: 2px 2px 5px 2px;
 `;
 
 const widgetList = ["VM", "SQL", "Resource Group", "Users", "Load Balancers"];
 
 const handleDrag = (widget, updateStateCallback) => {
-  // updates `_droppingItem` in Home.js
+    // updates `_droppingItem` in Home.js
 
-  updateStateCallback(widget);
+    updateStateCallback(widget);
 };
 
-export const AzureWidgets = ({ updateStateCallback }) => {
-  return (
-    <>
-      Azure Widgets
-      {widgetList.map((widget, index) => (
-        <DraggableWidget
-          key={index}
-          draggable={true}
-          onDrag={() => handleDrag(widget, updateStateCallback)}
-        >
-          {widget}
-        </DraggableWidget>
-      ))}
-    </>
-  );
+export const AzureWidgets = ({updateStateCallback}) => {
+    return (
+        <>
+            <h4>Azure Widgets</h4>
+            <div className="widgets">
+                {widgetList.map((widget, index) => (
+                    <DraggableWidget
+                        key={index}
+                        draggable={true}
+                        onDrag={() => handleDrag(widget, updateStateCallback)}
+                    >
+                        {widget}
+                    </DraggableWidget>
+                ))}
+            </div>
+        </>
+    );
 };
