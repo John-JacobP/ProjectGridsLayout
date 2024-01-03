@@ -1,0 +1,14 @@
+.HomePage{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.GridLayout{
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
+.widgets{
+    cursor: pointer;
+}

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import ReactGridLayout from "react-grid-layout";
 import styled from "styled-components";
+import "./Home.css"
 
 const Widget = styled.div`
   border: 1px solid black;
@@ -8,12 +9,7 @@ const Widget = styled.div`
 `;
 
 export default function Home() {
-  const [layout, setLayout] = useState([]);
-  // const layout = [
-  //   {i: "Sample Item 1", x: 0, y: 0, w: 1, h: 1},
-  //   {i: "Sample Item 2", x: 0, y: 1, w: 2, h: 1},
-  //   {i: "Sample Item 3", x: 3, y: 0, w: 2, h: 1},
-  // ];
+    const [layout, setLayout] = useState([]);
 
   useEffect(() => {
     const storedLayout = localStorage.getItem("layout");
@@ -22,25 +18,29 @@ export default function Home() {
     }
   }, []);
 
-  return (
-    <>
-      {layout.length > 0 ? (
-        <ReactGridLayout
-          isDraggable={false}
-          isDroppable={false}
-          isResizable={false}
-          layout={layout}
-          cols={12}
-          width={1300}
-          rowHeight={100}
-        >
-          {layout.map((widget) => (
-            <Widget key={widget.i}>{widget.i}</Widget>
-          ))}
-        </ReactGridLayout>
-      ) : (
-        <div>Please create a layout.</div>
-      )}
-    </>
-  );
+    return (
+        <>
+            {layout.length > 0 ? (
+                <div className="HomePage">
+                    <ReactGridLayout
+                        isDraggable={false}
+                        isDroppable={false}
+                        isResizable={false}
+                        layout={layout}
+                        cols={12}
+                        width={1300}
+                        rowHeight={100}
+                        compactType={null}
+                        className="GridLayout"
+                    >
+                        {layout.map((widget) => (
+                            <Widget className="widgets" key={widget.i}>{widget.i}</Widget>
+                        ))}
+                    </ReactGridLayout>
+                </div>
+            ) : (
+                <div>Please create a layout.</div>
+            )}
+        </>
+    );
 }
