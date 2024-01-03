@@ -1,0 +1,15 @@
+.FullPage{
+    display: flex;
+}
+
+.NavBar{
+    display: flex;
+}
+
+.Sidebar{
+    display: flex;
+}
+
+.body{
+    display: flex;
+}
