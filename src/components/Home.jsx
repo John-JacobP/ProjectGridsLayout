@@ -35,21 +35,16 @@ export default function Home() {
             layout={layout}
             cols={12}
             width={1300}
-            rowHeight={100}
+            rowHeight={200}
             compactType={null}
             className="GridLayoutHome"
           >
             {/* Render widgets based on the current layout configuration */}
-            {layout.map((widget) => (
-              <Widget className="widgets" key={widget.i}>
-                {widget.i}
-              </Widget>
-            ))}
-            {/* {
-              layout.map((widget, index) => (
-                <WidgetBuilder key={index} widget={widget}/>
+             {
+              layout.map((widget) => (
+                WidgetBuilder(widget)
               ))
-            } */}
+            }
           </ReactGridLayout>
         </div>
       ) : (
