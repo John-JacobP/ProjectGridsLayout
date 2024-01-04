@@ -5,7 +5,7 @@ const VMs = () => {
     return(
       <div className="FullPage">
           <div className="NavBar">
-              <p>Nav</p>
+              <p>NavBar</p>
           </div>
           <div className="SideBar">
               <p>Sidebar</p>
