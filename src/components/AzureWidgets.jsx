@@ -10,7 +10,7 @@ const DraggableWidget = styled.div`
   margin: 2px 2px 5px 2px;
 `;
 
-const widgetList = ["azure-VM", "azure-SQL", "azure-Resource Group", "azure-Users", "azure-Load Balancers"];
+const widgetList = ["VM", "SQL", "Resource Group", "Users", "Load Balancers"];
 
 const handleDrag = (widget, updateStateCallback) => {
     // updates `_droppingItem` in Home.js
