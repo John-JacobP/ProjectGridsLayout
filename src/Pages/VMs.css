@@ -10,6 +10,31 @@
   display: flex;
 }
 
-.body {
-  display: flex;
+.body{
+    display: flex;
+}
+
+.TableMainBody{
+    display: flex;
+    width: 80vw;
+}
+
+.TableBody{
+    display: flex;
+}
+
+.TableHeader{
+    display: flex;
+}
+
+.TableHeadDescr{
+    display: flex;
+}
+
+.TableDescr{
+    display: flex;
+}
+
+.TableRow{
+    display: flex;
 }

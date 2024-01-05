@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { widgetList } from "./components/AzureWidgets";
+import { Link } from "react-router-dom";
 
 const Widget = styled.div`
   border: 1px solid black;
@@ -22,10 +23,16 @@ export function WidgetBuilder(widget) {
   const _widget = getWidget(widget.i);
   return (
     <Widget key={widget.i}>
-      <h3>{_widget.name}</h3>
-      <hr />
-      Number of {_widget.name.toLocaleLowerCase()}
-      <h2>{Math.floor(Math.random() * (max - min) + min)}</h2>
-    </Widget>
+      <Link 
+        to={(_widget.id === "azure-vm") ? "/VMs": ""}
+        style={{ textDecoration: "none", color: "inherit"}}
+      >
+        <h3>{_widget.name}</h3>
+        <hr />
+        Number of {_widget.name.toLocaleLowerCase()}
+        <h2>{Math.floor(Math.random() * (max - min) + min)}</h2>
+
+      </Link>
+          </Widget>
   );
 }

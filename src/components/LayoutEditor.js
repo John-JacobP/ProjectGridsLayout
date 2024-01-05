@@ -111,8 +111,8 @@ const LayoutEditor = () => {
         i: newWidgetId,
         x: col,
         y: row,
-        w: 1,
-        h: 1,
+        w: 1.5,
+        h: 1.5,
       };
 
       // Update the layout configuration
