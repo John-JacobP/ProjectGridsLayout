@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ReactGridLayout from "react-grid-layout";
 import styled from "styled-components";
 import "./Home.css";
+import { WidgetBuilder } from "../WidgetBuilder";
 
 // Styled component for widget styling
 const Widget = styled.div`
@@ -12,16 +13,17 @@ const Widget = styled.div`
 
 // Home component for rendering the layout
 export default function Home() {
-    // State for managing the layout configuration
-    const [layout, setLayout] = useState([]);
+  // State for managing the layout configuration
+  const [layout, setLayout] = useState([]);
 
-    // hook to load the layout from local storage on component mount
-    useEffect(() => {
-        const storedLayout = localStorage.getItem("layout");
-        if (storedLayout) {
-            setLayout(JSON.parse(storedLayout));
-        }
-    }, []);
+  // hook to load the layout from local storage on component mount
+  useEffect(() => {
+    const storedLayout = localStorage.getItem("layout");
+    if (storedLayout) {
+      setLayout(JSON.parse(storedLayout));
+    }
+  }, []);
+
 
     return (
         <>
@@ -50,11 +52,7 @@ export default function Home() {
                                 className="GridLayoutHome"
                             >
                                 {/* Render widgets based on the current layout configuration */}
-                                {layout.map((widget) => (
-                                    <Widget className="widgets" key={widget.i}>
-                                        {widget.i}
-                                    </Widget>
-                                ))}
+                                {layout.map(widget => WidgetBuilder(widget))}
                             </ReactGridLayout>
                         ) : (
                             // Message for when there's no layout configured

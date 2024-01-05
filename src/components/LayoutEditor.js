@@ -92,7 +92,9 @@ const LayoutEditor = () => {
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     const col = Math.floor((x / rect.width) * GridLayoutProps.cols);
-    const row = Math.floor((y / rect.height) * (rect.height / GridLayoutProps.rowHeight));
+    const row = Math.floor(
+      (y / rect.height) * (rect.height / GridLayoutProps.rowHeight),
+    );
 
     // Generate a unique ID for the new widget
     const newWidgetId = `${droppingItem}`;
@@ -112,7 +114,9 @@ const LayoutEditor = () => {
       // Update the layout configuration
       setLayoutConfig((prevLayout) => [...prevLayout, newLayoutItem]);
     } else {
-      window.alert(`Widget with ID ${newWidgetId} already exists. Duplicates not allowed.`);
+      window.alert(
+        `Widget with ID ${newWidgetId} already exists. Duplicates not allowed.`,
+      );
     }
   };
 
@@ -145,20 +149,31 @@ const LayoutEditor = () => {
 
   // Handler for validating and updating the layout when widgets are moved or resized
   const validateWidget = (layout) => {
-    const newLayout = layout.filter((widget) => widget.i !== "__dropping-elem__");
+    const newLayout = layout.filter(
+      (widget) => widget.i !== "__dropping-elem__",
+    );
     setLayoutConfig(newLayout);
   };
 
   // Render the layout editor component
   return (
-      <div className="FullPage">
-        <div className="TopNav">
-          <Header>Layout Editor</Header>
+    <div className="FullPage">
+      <div className="TopNav">
+        <Header>Layout Editor</Header>
+      </div>
+      <div className="sidebarandbody">
+        <div className="sidebar">
+          {/* AzureWidgets component for selecting widgets to add */}
+          <AzureWidgets updateStateCallback={setDroppingItem} />
         </div>
-        <div className="sidebarandbody">
-          <div className="sidebar">
-            {/* AzureWidgets component for selecting widgets to add */}
-            <AzureWidgets updateStateCallback={setDroppingItem} />
+        <div className="body">
+          <div className="savebutton">
+            {/* Save Layout button with a click handler */}
+            <button style={{ cursor: "pointer" }} onClick={handleSaveLayout}>
+              Save Layout
+            </button>
+            {/* Display the layout saved message when triggered */}
+            {showLayoutSavedMessage && <p>Layout saved!</p>}
           </div>
           <div className="body">
             <div className="savebutton">
@@ -211,6 +226,7 @@ const LayoutEditor = () => {
           </div>
         </div>
       </div>
+    </div>
   );
 };
 

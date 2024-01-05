@@ -13,8 +13,14 @@ const VMs = () => {
           <div className="body">
               <p>BODY</p>
           </div>
+      <div className="SideBar">
+        <p>Sidebar</p>
       </div>
-    );
+      <div className="body">
+        <p>BODY</p>
+      </div>
+    </div>
+  );
 };
 
 export default VMs;

@@ -1,0 +1,9 @@
+{
+  "azure": [
+    { "id": "vm", "count": 5 },
+    { "id": "sql", "count": 2 },
+    { "id": "resource-group", "count": 1 },
+    { "id": "users", "count": 2 },
+    { "id": "load-balancers", "count": 2 }
+  ]
+}

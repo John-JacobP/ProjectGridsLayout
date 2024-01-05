@@ -1,15 +1,15 @@
-.FullPage{
-    display: flex;
+.FullPage {
+  display: flex;
 }
 
-.NavBar{
-    display: flex;
+.NavBar {
+  display: flex;
 }
 
-.Sidebar{
-    display: flex;
+.Sidebar {
+  display: flex;
 }
 
-.body{
-    display: flex;
+.body {
+  display: flex;
 }
