@@ -29,7 +29,7 @@ const LayoutEditor = () => {
 
   const [selectedLayout, setSelectedLayout] = useState(null);
   const [storedLayouts, setStoredLayouts] = useState(
-      JSON.parse(localStorage.getItem("layouts")) || []
+    JSON.parse(localStorage.getItem("layouts")) || [],
   );
 
   const handleAddLayout = () => {
@@ -58,7 +58,9 @@ const LayoutEditor = () => {
 
   const handleSelectLayout = (layoutName) => {
     const storedLayouts = JSON.parse(localStorage.getItem("layouts")) || [];
-    const selectedLayout = storedLayouts.find((layout) => layout.name === layoutName);
+    const selectedLayout = storedLayouts.find(
+      (layout) => layout.name === layoutName,
+    );
 
     if (selectedLayout) {
       setSelectedLayout(selectedLayout);
@@ -69,7 +71,9 @@ const LayoutEditor = () => {
 
   const handleDeleteLayout = () => {
     if (selectedLayout) {
-      const updatedLayouts = storedLayouts.filter((layout) => layout.name !== selectedLayout.name);
+      const updatedLayouts = storedLayouts.filter(
+        (layout) => layout.name !== selectedLayout.name,
+      );
 
       localStorage.setItem("layouts", JSON.stringify(updatedLayouts));
 
@@ -125,7 +129,9 @@ const LayoutEditor = () => {
     if (selectedLayout) {
       const storedLayouts = JSON.parse(localStorage.getItem("layouts")) || [];
       const updatedLayouts = storedLayouts.map((layout) =>
-          layout.name === selectedLayout.name ? { ...layout, items: layoutConfig } : layout
+        layout.name === selectedLayout.name
+          ? { ...layout, items: layoutConfig }
+          : layout,
       );
 
       localStorage.setItem("layouts", JSON.stringify(updatedLayouts));
@@ -188,16 +194,16 @@ const LayoutEditor = () => {
                   Select a Layout
                 </option>
                 {storedLayouts.map((layout) => (
-                    <option key={layout.name} value={layout.name}>
-                      {layout.name}
-                    </option>
+                  <option key={layout.name} value={layout.name}>
+                    {layout.name}
+                  </option>
                 ))}
               </select>
 
               <button
-                  style={{ cursor: "pointer", marginLeft: "10px" }}
-                  onClick={handleDeleteLayout}
-                  disabled={!selectedLayout}
+                style={{ cursor: "pointer", marginLeft: "10px" }}
+                onClick={handleDeleteLayout}
+                disabled={!selectedLayout}
               >
                 Delete Layout
               </button>
@@ -205,21 +211,21 @@ const LayoutEditor = () => {
               {showLayoutSavedMessage && <p>Layout saved!</p>}
             </div>
             <div
-                className="insideBody"
-                onDrop={(event) => handleDrop(event)}
-                onDragOver={(event) => event.preventDefault()}
+              className="insideBody"
+              onDrop={(event) => handleDrop(event)}
+              onDragOver={(event) => event.preventDefault()}
             >
               <GridLayout
-                  {...GridLayoutProps}
-                  isDroppable={true}
-                  onLayoutChange={validateWidget}
-                  onDrop={(layout, layoutItem, event) => handleDrop(event)}
-                  className="GridLayout"
+                {...GridLayoutProps}
+                isDroppable={true}
+                onLayoutChange={validateWidget}
+                onDrop={(layout, layoutItem, event) => handleDrop(event)}
+                className="GridLayout"
               >
                 {layoutConfig.map((layout) => (
-                    <Widget key={layout.i} data-grid={layout}>
-                      {layout.i}
-                    </Widget>
+                  <Widget key={layout.i} data-grid={layout}>
+                    {layout.i}
+                  </Widget>
                 ))}
               </GridLayout>
             </div>

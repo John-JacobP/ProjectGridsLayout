@@ -5,6 +5,7 @@ import "./App.css";
 import Dashboard from "./components/Dashboard";
 import LayoutEditor from "./components/LayoutEditor";
 import Home from "./components/Home";
+import VMs from "./Pages/VMs";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/editor" element={<LayoutEditor />} />
+          {/* <Route path="/azure-vm" element={<VMs />} /> */}
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
