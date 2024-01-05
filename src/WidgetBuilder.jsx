@@ -4,6 +4,7 @@ import { widgetList } from "./components/AzureWidgets";
 const Widget = styled.div`
   border: 1px solid black;
   border-radius: 5px;
+  cursor: pointer;
 `;
 
 
@@ -22,7 +23,7 @@ export function WidgetBuilder(widget) {
     <Widget key={widget.i}>
       <h3>{_widget.name}</h3>
       <hr />
-      <h6>Number of instances</h6>
+      <h4>Number of instances</h4>
       <h2>0</h2>
     </Widget>
   );
