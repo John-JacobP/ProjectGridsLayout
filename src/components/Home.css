@@ -1,36 +1,42 @@
 .FullPage {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-wrap: wrap;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.NavBar{
-    width: 100vw;
-    height: 5vh;
-    display: flex;
-    background-color: #003c51;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
+.NavBar {
+  width: 100vw;
+  height: 5vh;
+  display: flex;
+  background-color: #003c51;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
 }
 
-.SideBar{
-    height: 95vh;
-    width: 10vw;
-    display: flex;
-    background-color: #006e74;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 2vh;
+.SideBar {
+  height: 95vh;
+  width: 10vw;
+  display: flex;
+  background-color: #006e74;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2vh;
 }
 
-.GridLayoutHome{
-    height: 100% !important;
-    width: 100% !important;
+.HomePage {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
 }
 
-.widgets{
-    cursor: pointer;
+.GridLayoutHome {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.widgets {
+  cursor: pointer;
 }

@@ -1,0 +1,31 @@
+import styled from "styled-components";
+import { widgetList } from "./components/AzureWidgets";
+
+const Widget = styled.div`
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  background: white;
+`;
+
+function getWidget(id) {
+  const widget = widgetList.filter((temp) => temp.id === id);
+  if (widget.length > 0) {
+    return widget.at(0);
+  }
+  return null;
+}
+
+export function WidgetBuilder(widget) {
+  const max = 10;
+  const min = 1;
+  const _widget = getWidget(widget.i);
+  return (
+    <Widget key={widget.i}>
+      <h3>{_widget.name}</h3>
+      <hr />
+      Number of {_widget.name.toLocaleLowerCase()}
+      <h2>{Math.floor(Math.random() * (max - min) + min)}</h2>
+    </Widget>
+  );
+}

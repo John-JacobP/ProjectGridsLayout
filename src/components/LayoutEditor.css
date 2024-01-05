@@ -30,11 +30,11 @@
   gap: 2vh;
 }
 
-h4{
-  margin: 10px 0 0 0 ;
+h4 {
+  margin: 10px 0 0 0;
 }
 
-p{
+p {
   margin: 0 0 0 10px;
 }
 
@@ -61,13 +61,13 @@ p{
   gap: 6px;
 }
 
-.GridLayout{
+.GridLayout {
   display: flex;
   height: 100% !important;
   width: 100% !important;
 }
 
-.savebutton{
+.savebutton {
   display: flex;
   width: 100%;
   justify-content: flex-end;

@@ -1,11 +1,11 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import "./App.css";
-import VMs from "./Pages/VMs";
 
 import Dashboard from "./components/Dashboard";
 import LayoutEditor from "./components/LayoutEditor";
 import Home from "./components/Home";
+import VMs from "./Pages/VMs";
+import "./App.css";
 
 function App() {
     return (
