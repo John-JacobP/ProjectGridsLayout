@@ -176,8 +176,16 @@ const LayoutEditor = () => {
           {/* AzureWidgets component for selecting widgets to add */}
           {/* <AzureWidgets updateStateCallback={setDroppingItem} />
           <AwsWidgets /> */}
-          <ShowWidgets title={"Azure"} widgetsList={azureWidgetList} updateStateCallback={setDroppingItem}/>
-          <ShowWidgets title={"AWS"} widgetsList={awsWidgetList} updateStateCallback={setDroppingItem}/>
+          <ShowWidgets
+            title={"Azure"}
+            widgetsList={azureWidgetList}
+            updateStateCallback={setDroppingItem}
+          />
+          <ShowWidgets
+            title={"AWS"}
+            widgetsList={awsWidgetList}
+            updateStateCallback={setDroppingItem}
+          />
         </div>
         <div className="body">
           <div className="savebutton">
