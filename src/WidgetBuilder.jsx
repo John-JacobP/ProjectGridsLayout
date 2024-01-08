@@ -1,6 +1,11 @@
+// To show the widget according to the cloud provider
+// and with additional information related to a particular widget.
+
 import styled from "styled-components";
-import { widgetList } from "./components/AzureWidgets";
 import { Link } from "react-router-dom";
+
+import {azureWidgetList} from "../src/data/AzureWidgets";
+import {awsWidgetList} from "../src/data/AwsWidgets";
 
 const Widget = styled.div`
   border: 1px solid black;
@@ -10,6 +15,7 @@ const Widget = styled.div`
 `;
 
 function getWidget(id) {
+  const widgetList = [...azureWidgetList, ...awsWidgetList];
   const widget = widgetList.filter((temp) => temp.id === id);
   if (widget.length > 0) {
     return widget.at(0);
