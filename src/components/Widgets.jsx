@@ -27,5 +27,4 @@ export const ShowWidgets = ({ title, widgetsList, updateStateCallback }) => {
       </div>
     </>
   );
-
-}
+};
