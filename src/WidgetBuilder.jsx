@@ -23,16 +23,15 @@ export function WidgetBuilder(widget) {
   const _widget = getWidget(widget.i);
   return (
     <Widget key={widget.i}>
-      <Link 
-        to={(_widget.id === "azure-vm") ? "/VMs": ""}
-        style={{ textDecoration: "none", color: "inherit"}}
+      <Link
+        to={_widget.id === "azure-vm" ? "/VMs" : ""}
+        style={{ textDecoration: "none", color: "inherit" }}
       >
         <h3>{_widget.name}</h3>
         <hr />
         Number of {_widget.name.toLocaleLowerCase()}
         <h2>{Math.floor(Math.random() * (max - min) + min)}</h2>
-
       </Link>
-          </Widget>
+    </Widget>
   );
 }

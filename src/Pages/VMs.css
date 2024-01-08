@@ -10,31 +10,31 @@
   display: flex;
 }
 
-.body{
-    display: flex;
+.body {
+  display: flex;
 }
 
-.TableMainBody{
-    display: flex;
-    width: 80vw;
+.TableMainBody {
+  display: flex;
+  width: 80vw;
 }
 
-.TableBody{
-    display: flex;
+.TableBody {
+  display: flex;
 }
 
-.TableHeader{
-    display: flex;
+.TableHeader {
+  display: flex;
 }
 
-.TableHeadDescr{
-    display: flex;
+.TableHeadDescr {
+  display: flex;
 }
 
-.TableDescr{
-    display: flex;
+.TableDescr {
+  display: flex;
 }
 
-.TableRow{
-    display: flex;
+.TableRow {
+  display: flex;
 }
