@@ -4,6 +4,7 @@ import GridLayout from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import { AzureWidgets } from "./AzureWidgets";
+import {AwsWidgets} from "./AwsWidgets";
 import "./LayoutEditor.css";
 
 // Styled components for enhanced styling
@@ -171,6 +172,7 @@ const LayoutEditor = () => {
         <div className="sidebar">
           {/* AzureWidgets component for selecting widgets to add */}
           <AzureWidgets updateStateCallback={setDroppingItem} />
+          <AwsWidgets />
         </div>
         <div className="body">
           <div className="savebutton">
