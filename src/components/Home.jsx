@@ -6,12 +6,25 @@ import Tab from "@mui/joy/Tab";
 import TabPanel from "@mui/joy/TabPanel";
 import { WidgetBuilder } from "../WidgetBuilder";
 import "./Home.css";
+import styled from "styled-components";
+
+
+const Header = styled.h2`
+  color: #6DA4AA;
+  padding: 5px;
+`;
+
+const SideBarOption = styled.div`
+  color: #F8F4EC;
+  font-size: 20px;
+  cursor: pointer;
+`;
 
 // Home component for rendering the layout
 export default function Home() {
   // State for managing the layout configuration
   const [layout, setLayout] = useState([]);
-
+  const options = ["Inventory", "Billing Usage", "Usage Analytics"]
   // hook to load the layout from local storage on component mount
   useEffect(() => {
     const storedLayout = JSON.parse(localStorage.getItem("layouts")) || [];
@@ -23,8 +36,15 @@ export default function Home() {
   return (
     <>
       <div className="FullPage">
-        <div className="NavBar">Nav</div>
-        <div className="SideBar">Side</div>
+        <div className="NavBar">
+          <Header>CloudGaze
+          </Header>
+        </div>
+        <div className="SideBar">
+          {
+            options.map(option => <SideBarOption>{option}</SideBarOption>)
+          }
+        </div>
         <div className="body">
           {layout.length > 0 ? (
             <Tabs
