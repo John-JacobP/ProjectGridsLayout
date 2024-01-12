@@ -4,8 +4,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { azureWidgetList } from "../src/data/AzureWidgets";
-import { awsWidgetList } from "../src/data/AwsWidgets";
+import { azureWidgetList } from "./data/AzureWidgets";
+import { awsWidgetList } from "./data/AwsWidgets";
 
 const Widget = styled.div`
   border: 1px solid black;
